@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
+const hbs = require('hbs')
 
 // Routers that have all the get/post etc routes
 
@@ -12,6 +13,9 @@ var createCubeRouter = require('./routes/create');
 var attachAccessoryRouter = require('./routes/attach');
 var detailsRouter = require('./routes/details');
 var aboutRouter = require('./routes/about')
+var searchRouter = require('./routes/search');
+var loginRouter = require('./routes/login');
+var registerRouter = require('./routes/register');
 
 // Create a variable named "app" to represent our application and invoke Express()
 var app = express(); 
@@ -34,7 +38,14 @@ require('dotenv').config()
 // View Engine Setup
 
 app.set('views', path.join(__dirname, 'views')); // setting folder for public files
-app.set('view engine', 'hbs'); // setting view engine to hbs, engine compiles views and data into HTML
+
+// register the partials, hint if it says module not found after you do this, its because the module most likely isn't there! Import it! 
+
+hbs.registerPartials(__dirname + '/views/partials'); 
+
+// setting view engine to hbs, engine compiles views and data into HTML
+
+app.set('view engine', 'hbs'); 
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -50,6 +61,9 @@ app.use('/create', createCubeRouter);
 app.use('/attach', attachAccessoryRouter)
 app.use('/details', detailsRouter);
 app.use('/about', aboutRouter);
+app.use('/search', searchRouter)
+app.use('/login', loginRouter)
+app.use('/register', registerRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

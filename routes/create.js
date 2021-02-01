@@ -13,11 +13,11 @@ router.post('/', function(req, res, next) {
   console.log("incoming form submission " , req.body);
 
     const newCube = new Cube({
-    _id: Math.random(),
     name: req.body.name,
     description: req.body.description,
     image_url: req.body.imageUrl,
     level: req.body.difficultyLevel,
+    accessories: []
     });
     
     newCube.save()

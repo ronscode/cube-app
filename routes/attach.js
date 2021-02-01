@@ -9,13 +9,14 @@ const Accessory = require('../models/accessory');
 router.get('/:id', function(req, res, next) {
 
   var theAccessory;
+
   Accessory.find({}).then((response) => {
   console.log(response)
     theAccessory = response
   });
   Cube.findOne({_id: req.params.id}).populate('accessories')  
   .then((response) => {
-      console.log('Cube to attach accessory to ', response, theAccessory)
+      console.log('***** Cube to attach accessory to ', response.accessories[1], theAccessory)
       res.render('attachAccessory', { title: 'Attach Accessory', cube: response, accessories: theAccessory });
     })
   

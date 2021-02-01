@@ -91,7 +91,7 @@ p.name {
 }
 
 
-button, main a.btn {
+/* button, main a.btn {
     border: none;
     padding: 8px;
     text-align: center;
@@ -103,8 +103,8 @@ button, main a.btn {
     border-radius: 4px;
     background: #607588;
     color: white;
-}
-
+} */
+/* 
 .details a.btn{
     width: 28%;
 }
@@ -113,11 +113,11 @@ button:hover {
     background-color: #0B2133;
     color: white;
     cursor: pointer;
-}
+} */
 
-a.btn:hover{
+/* a.btn:hover{
     text-decoration: underline;
-}
+} */
 
 a {
     text-decoration: underline;
