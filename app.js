@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
-const hbs = require('hbs')
+const hbs = require('hbs');
 
 // Routers that have all the get/post etc routes
 
@@ -16,6 +16,7 @@ var aboutRouter = require('./routes/about')
 var searchRouter = require('./routes/search');
 var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
+var cookiesRouter = require('./routes/cookies')
 
 // Create a variable named "app" to represent our application and invoke Express()
 var app = express(); 
@@ -63,7 +64,8 @@ app.use('/details', detailsRouter);
 app.use('/about', aboutRouter);
 app.use('/search', searchRouter)
 app.use('/login', loginRouter)
-app.use('/register', registerRouter)
+app.use('/register', registerRouter);
+app.use('/cookies', cookiesRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -8,16 +8,23 @@ const Accessory = require('../models/accessory');
 /* GET home page. */
 router.get('/:id', function(req, res, next) {
 
-  var theAccessory;
+  var allAccessory;
 
   Accessory.find({}).then((response) => {
-  console.log(response)
-    theAccessory = response
+  //console.log(response)
+    allAccessory = response
   });
   Cube.findOne({_id: req.params.id}).populate('accessories')  
   .then((response) => {
-      console.log('***** Cube to attach accessory to ', response.accessories[1], theAccessory)
-      res.render('attachAccessory', { title: 'Attach Accessory', cube: response, accessories: theAccessory });
+      let availAccessories = allAccessory.map(x => x);
+      console.log("copied now availAccessories", availAccessories)
+      let filteredAcc = []
+      for (x of response.accessories) {
+        console.log("x is ", x._id);
+      }
+      console.log('***** Filtered accessories ', filteredAcc)
+    //  console.log('***** Cube to attach accessory to ', response)
+      res.render('attachAccessory', { title: 'Attach Accessory', cube: response, accessories: allAccessory });
     })
   
 });

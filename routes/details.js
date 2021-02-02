@@ -9,8 +9,8 @@ router.get('/:id', function(req, res, next) {
   let id = req.params.id;
   Cube.findOne({_id: id}).populate('accessories')
     .then((results) => {
-      console.log("The single cube results are ", results)
-      console.log("the accessories are ", results.accessories)
+      // console.log("The single cube results are ", results)
+     // console.log("the accessories are ", results.accessories)
       res.render('updatedDetailsPage', {cube: results, accessories: results.accessories})
     } )
 
