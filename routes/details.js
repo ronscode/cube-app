@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const Accessory = require('../models/accessory')
 const Cube = require('../models/cube');
+const auth = require('../controllers/auth');
 
 
 /* GET users listing. */
@@ -11,15 +12,8 @@ router.get('/:id', function(req, res, next) {
     .then((results) => {
       console.log("The single cube results are ", results)
       console.log("the accessories are ", results.accessories)
-      res.render('updatedDetailsPage', {cube: results, accessories: results.accessories})
-    } )
-
-  
-
-  
-  //console.log("the db cube is ", cube.find({}))
- // console.log("the id is ", id)
-//  res.send('respond with a resource');
+      res.render('details', {cube: results, accessories: results.accessories, loggedIn: req.cookies.loggedIn})
+    });
 });
 
 module.exports = router;

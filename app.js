@@ -4,7 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
-const hbs = require('hbs')
+const hbs = require('hbs');
+const jwt = require('jsonwebtoken');
 
 // Routers that have all the get/post etc routes
 
@@ -16,15 +17,18 @@ var aboutRouter = require('./routes/about')
 var searchRouter = require('./routes/search');
 var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
+var editRouter = require('./routes/edit');
+var deleteRouter = require('./routes/delete')
 
 // Create a variable named "app" to represent our application and invoke Express()
 var app = express(); 
 
 // Hide your Mongo connection variables 
-require('dotenv').config()
+require('dotenv').config();
+
+app.set('Secret', process.env.JWT_SECRET)
 
 // Mongo DB Connection 
-//console.log('the process env is ', process.env)
   mongoose.connect(process.env.DB_URI,  {
     dbName: process.env.DB_NAME,
     user: process.env.DB_USER,
@@ -61,9 +65,11 @@ app.use('/create', createCubeRouter);
 app.use('/attach', attachAccessoryRouter)
 app.use('/details', detailsRouter);
 app.use('/about', aboutRouter);
-app.use('/search', searchRouter)
-app.use('/login', loginRouter)
-app.use('/register', registerRouter)
+app.use('/search', searchRouter);
+app.use('/login', loginRouter);
+app.use('/register', registerRouter);
+app.use('/edit', editRouter);
+app.use('/delete', deleteRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

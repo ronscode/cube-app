@@ -1,8 +1,72 @@
- <ul>
-                <li><img class="logo" src="/images/logo.png"></li>
-                <li><a href="/">Browse</a></li>
-                <li><a href="/create">Add a Cube</a></li>
-                <li><a href="/create/accessory">Add Accessory</a></li>
-                <li><a href="/about">About</a></li>
-                <li>Test</li>
-            </ul>
+
+{{#if loggedIn}}
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a href="/" ><img class="logo" src="/images/logo.png"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Browse</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/create">Add Cube</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/create/accessory">Add Accessory</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+    </li>
+     <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+      </ul>
+       <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+      <span class="navbar-text">
+        All Cubes. All the Time.
+      </span>
+    </div>
+  </div>
+</nav>
+      {{ else }}
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a href="/" ><img class="logo" src="/images/logo.png"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">BROWSE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">LOGIN</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/register">REGISTER</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="/about">ABOUT</a>
+        </li>
+      </ul>
+       <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <input type="number" name="from" class="form-control form-control-sm" placeholder="Difficulty from...">
+      <input type="number" name="to" class="form-control form-control-sm" placeholder="Difficulty to...">
+      <button class="btn btn-outline-info" type="submit">Search</button>
+    </form>
+    </div>
+  </div>
+</nav>
+{{/if}}
+         
+           

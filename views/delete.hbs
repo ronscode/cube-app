@@ -3,20 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Attach Accessory</title>
+    <title>Delete a Cube</title>
     <link href="./css/site.css" type="text/css" rel="stylesheet">
     <link rel='shortcut icon' type='image/x-icon' href='./images/favicon.png' />
 </head>
 <body>
     <div class="container">
         <header>
-            <ul>
-                <li><img class="logo" src="/images/logo.png"></li>
-                <li><a href="/">Browse</a></li>
-                <li><a href="/">Add a Cube</a></li>
-                <li><a href="/">Add Accessory</a></li>
-                <li><a href="/">About</a></li>
-            </ul>
+           {{> navigation}}
         </header>
         <main>
 
@@ -25,7 +19,18 @@
       <div class="details">
         <p><span>Description:</span> {{cube.description}}</p>
         <p><span>Difficulty level:</span> {{cube.level}}</p>
-                <a class="btn" href="/">Back</a>   <a class="btn btn-primary" href="/attach/{{cube._id}}">Attach</a>
+        <div class="alert alert-danger" role="alert">
+ WARNING THIS IS PERMANENT THERE IS NO UNDO, CONTINUE?
+</div>
+         
+         <div class="text-center"> 
+           <form action="/delete/{{cube.id}}" method="POST">
+      <input type="text" id="name" name="name" value="" disabled="true"/>
+              <input class="btn btn-danger" type="submit" value="DELETE THE CUBE "/>
+          </form>
+           
+           
+           <a class="btn btn-danger text-center" href="/delete/{{cube._id}}">Delete</a></div>
             </div>
             <h2>Accessories</h2>
             <div class="accessories">

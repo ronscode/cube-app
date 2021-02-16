@@ -17,7 +17,7 @@ router.get('/:id', function(req, res, next) {
   Cube.findOne({_id: req.params.id}).populate('accessories')  
   .then((response) => {
       console.log('***** Cube to attach accessory to ', response.accessories[1], theAccessory)
-      res.render('attachAccessory', { title: 'Attach Accessory', cube: response, accessories: theAccessory });
+      res.render('attachAccessory', { title: 'Attach Accessory', cube: response, accessories: theAccessory,loggedIn: req.cookies.loggedIn });
     })
   
 });
@@ -27,7 +27,7 @@ router.post('/:id', function(req, res, next) {
 
   var theAccessory;
 Accessory.find({}).then((response) => {
-console.log(response)
+
   theAccessory = response
 });
   Cube.findOneAndUpdate({_id: req.params.id}, { $addToSet: { accessories: [req.body.accessory]}}, function(err, res) {

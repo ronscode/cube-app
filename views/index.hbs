@@ -1,31 +1,20 @@
 
-
-
-
-<body>
   <div class="container">
     <header>
     {{> navigation}}
     </header>
     <main>
-      <h1>Browser {{title}}</h1>
-      <h1></h1>
-<p>Welcome to {{title}}</p>
-      <form action="" method="">
-        <input type="text" class="search" name="search" placeholder="Search...">
-        <input type="number" name="from" class="difficulty" placeholder="Difficulty from...">
-        <span>-</span>
-        <input type="number" name="to" class="difficulty" placeholder="Difficulty to...">
-        <input type="submit" value="search">
-      </form>
-      <br>
-      <div class="row">
+      <h1 class="rubik text-primary text-center">WELCOME TO CUBE KEEPER</h1>
+      <div class="row justify-content-between">
       {{#each cube}}
-        <div class="cube col p-2 m-1">
+        <div class="cube col-3 m-2 p-2 bg-light border border-primary border-4 text-center">
           <img class="cube" src="{{image_url}}">
           <p class="name">{{name}}</p>
-          <p><span>Difficulty level:</span>{{difficultyLevel}}</p>
-          <div class="btn-primary m-1 p-1 rounded text-center"><a class="" href="/details/{{_id}} ">Details</a></div>
+          <p><span>Difficulty level: </span>{{level}}</p>
+
+          
+
+          <a class="btn btn-primary " href="/details/{{_id}} ">Details</a>
         </div>
       
       {{else}}

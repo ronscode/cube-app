@@ -8,51 +8,52 @@
     <link rel='shortcut icon' type='image/x-icon' href='./images/favicon.png' />
 </head>
 <body>
-  <header>
-
-        </header>
     <div class="container">
-                    {{> navigation}}
-      <div class="row row justify-content-start bg-light m-1">
-        <div class="col-6 m-4 bg-light">    
-          <h1 class="rubik text-primary ">{{cube.name}} </h1>
-          <p><span>Description:</span> {{cube.description}}</p>
-          <p><span>Difficulty level:</span> {{cube.level}}</p>
-        
+        <header>
+            {{> navigation}}
+        </header>
+      <div class="row">
+        <div class="col-8"><h1>{{cube.name}} </h1>
+              <div class="details">
+        <p><span>Description:</span> {{cube.description}}</p>
+        <p><span>Difficulty level:</span> {{cube.level}}</p>
           <a class="btn btn-primary" href="/attach/{{cube._id}}">Attach</a>
           {{#if loggedIn}}
           <a class="btn btn-info" href="/edit/{{cube._id}}">Edit</a>
           <a class="btn btn-danger" href="/delete/{{cube._id}}">Delete</a>
           {{/if}}
-        
-   <h2 class="mt-3 rubik text-primary">Accessories</h2>
-   
-   <div class="row">
-    {{#if cube.accessories}}
+            </div>
+            <h2>Accessories</h2>
+            <div class="accessories">
+            {{#if cube.accessories}}
               {{#each cube.accessories }}
 
-              <div class="col-4" >
+              <div class="card" style="width: 18rem;">
                <img src="{{imageUrl}}" class="card-img-top" alt="{{name}}">
                <div class="card-body">
                 <h5 class="card-title">{{name}}</h5>
                <p class="card-text">{{description}}</p>
-                  
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
               </div>
                 {{/each}}
               {{else}}
                 <h3 class="italic">This cube has no accessories yet...</h3>
               {{/if}}
-        
 
-   </div>
-        </div>
-        <div class="col-4 m-4 mx-auto">
-          <img class="p-3 img-fluid rounded border border-3 border-primary" src="{{cube.image_url}}">
-        </div>
-         </div>
-     </div>
 
+
+
+        <div class="col"><img class="cube" src="{{cube.image_url}}"></div>
+      
+
+
+
+      </div>
+
+
+
+    </div>
     <footer>@Cubicle: Exercise for Express.js and Handlebars</footer>
 </body>
 </html>
