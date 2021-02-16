@@ -13,17 +13,27 @@
         <header>
                {{> navigation}}
         </header>
-        <main>
-            <h1>Create Accessory</h1>
-            <div class="form">
+        <main class="bg-light mb-4 ">
+            <h1 class="rubik text-primary text-center">Add Accessory</h1>
+            <div class="form m-4">
                 <form action='/create/accessory' method="POST">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name">
-                    <label for="name">Description</label>
-                    <textarea id="name" name="description"></textarea>
-                    <label for="image">ImageUrl</label>
-                    <input type="text" id="image" name="imageUrl">
-                    <input type="submit" value="Create">
+
+                  <div class="mb-3">
+                    <label class="form-label" for="name">Name:</label>
+                    <input type="text" id="name" name="name" class="form-control" >
+                   </div>
+
+                  <div class="mb-3">
+                    <label class="form-label" for="Description">Description:</label>
+                    <textarea id="name" name="description" rows="5" class="form-control"></textarea>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label class="form-label" for="image">Image URL:</label>
+                    <input type="text" id="image" name="imageURL" class="form-control" >
+                  </div>
+              
+                    <input class="btn btn-info mb-3" type="submit" value="Create">
                 </form>
             </div>
         </main>

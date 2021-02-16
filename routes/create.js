@@ -17,7 +17,7 @@ router.post('/', function(req, res, next) {
     const newCube = new Cube({
     name: req.body.name,
     description: req.body.description,
-    image_url: req.body.imageUrl,
+    image_url: req.body.image_url,
     level: req.body.difficultyLevel,
     accessories: []
     });
@@ -25,7 +25,7 @@ router.post('/', function(req, res, next) {
     newCube.save()
     .then((result) => {
       console.log(result)
-      res.send(result)
+      res.redirect('/')
       })
       .catch((err) => {
         res.send(err)
