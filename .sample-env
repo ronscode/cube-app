@@ -1,0 +1,5 @@
+DB_URI=mongodb+srv://your url goes here (without spaces)
+DB_NAME=<yourDatabaseName>
+DB_USER=<yourDatabaseUser>
+DB_PASS=<yourDatabasePassword>
+JWT_SECRET=<yourJWTSecret>

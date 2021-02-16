@@ -4,11 +4,11 @@ const Cube = require('../models/cube');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  console.log(req.body)
   Cube.find()
     .then((response) => {
-      console.log('all the cubes are ', response);
-      //console.log("The login cookie is ", req.cookies.loggedIn)
-      res.render('index', { title: 'Express Now With Mongo', cube: response, loggedIn: req.cookies.loggedIn });
+      console.log('all the cubes are ', response)
+      res.render('search', { title: 'Search Cube Results', cube: response });
     })
   
 });

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <link href="./stylesheets/site.css" type="text/css" rel="stylesheet">
+  <link rel='shortcut icon' type='image/x-icon' href='./images/favicon.png' />
+</head>
+
+<body>
+  <div class="container">
+    <header>
+     {{> navigation}}
+    </header>
+    <main class="bg-light">
+	<h1 class="rubik text-primary">Login Form</h1>
+<div class="row">
+  <div class="col"></div>
+  <div class="col-6">
+    <div class="form">
+    <form action='/login' method="POST">
+    <div class="mb-3">
+        <label class="form-label" for="username">Username</label>
+        <input type="text" id="username" name="username" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="password" class="form-control">Password</label>
+        <input type="password" id="password" name="password" class="form-control">
+        
+    </div>
+    <input type="submit" value="Login" class="form-control mb-3 btn btn-info">
+    </form>
+</div>
+
+  </div>
+  <div class="col"></div>
+</div>
+ {{#if errors}}
+     <div id="notifications">
+     
+<div class="alert alert-warning" role="alert">
+{{errors}}
+</div>
+  </div>
+    {{/if}}
+    </main>
+  </div>
+  <footer>@Cubicle: Exercise for Express.js and Handlebars</footer>
+
+</body>
+
+</html>

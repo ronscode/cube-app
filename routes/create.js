@@ -2,28 +2,30 @@ var express = require('express');
 var router = express.Router();
 const Cube = require('../models/cube');
 const Accessory = require('../models/accessory');
+const auth = require('../controllers/auth');
+const { check, validationResults } = require('express-validator');
 
 /* GET Add Cube page. */
-router.get('/', function(req, res, next) {
+router.get('/', auth, function(req, res, next) {
   console.log('add a cube')
-  res.render('create', { title: 'Create a Cube ' });
+  res.render('create', { title: 'Create a Cube ', loggedIn: req.cookies.loggedIn });
 });
 
 router.post('/', function(req, res, next) {
   console.log("incoming form submission " , req.body);
 
     const newCube = new Cube({
-    _id: Math.random(),
     name: req.body.name,
     description: req.body.description,
-    image_url: req.body.imageUrl,
+    image_url: req.body.image_url,
     level: req.body.difficultyLevel,
+    accessories: []
     });
     
     newCube.save()
     .then((result) => {
       console.log(result)
-      res.send(result)
+      res.redirect('/')
       })
       .catch((err) => {
         res.send(err)
@@ -33,7 +35,7 @@ router.post('/', function(req, res, next) {
 
 router.get('/accessory', function(req, res, next) {
   console.log('Create accessory');
-  res.render('createAccessory', { title: 'Add Accessory'})
+  res.render('createAccessory', { title: 'Add Accessory', loggedIn: req.cookies.loggedIn })
 });
 
 router.post('/accessory', function(req, res, next) {
